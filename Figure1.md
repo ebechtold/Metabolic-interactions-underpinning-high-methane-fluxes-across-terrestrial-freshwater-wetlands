@@ -75,3 +75,4 @@ s
 
 UpSet(s, set_order = c("Marsh", "Bog", "Fen", "February", "March", "May", "June", "July", "August", "September", "October", "D1", "D2", "D3", "D5"),  comb_col=c("black"))
 ```
+*final figure presentation was improved in illustrator
