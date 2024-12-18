@@ -1,7 +1,7 @@
 Figure 1
 
 Code for figure 1A
-```{r}
+```
 library(tidyverse)
 library(scales)
 ```
