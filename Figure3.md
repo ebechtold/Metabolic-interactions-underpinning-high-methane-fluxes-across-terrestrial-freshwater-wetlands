@@ -21,8 +21,8 @@ library(gephi)
 
 
 ```{r}
-asv.table<-read.csv("genus_table.csv", header=T, row.names = 1)
-tax<-read.csv("genus_id_gtdb.csv",header=T, row.names = 1)
+asv.table<-read.csv("Source_data_Figure3a.csv", header=T, row.names = 1)
+tax<-read.csv("Source_data_Figure3_taxonomy.csv",header=T, row.names = 1)
 ```
 
 
