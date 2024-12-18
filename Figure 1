@@ -1,0 +1,46 @@
+Figure 1
+
+Code for figure 1A
+```{r}
+library(tidyverse)
+library(scales)
+```
+
+```{r}
+data <- read_csv("Source_Data1A.csv")
+```
+
+
+
+```{r}
+data$temp <- as.numeric(data$temp)
+```
+
+```{r}
+data1 <- data %>% 
+  filter(Select=="Yes") 
+  
+```
+
+
+
+```{r}
+
+library(ggpubr)
+plot1 <- ggplot(data1, aes(x=temp, y=methane)) +
+  geom_point(aes(shape=Type, color=Color, size=3))+
+    geom_smooth(method=lm, se=FALSE, colour="black") +
+  geom_errorbar(aes(ymin=methane-methane_sd, ymax=methane+methane_sd))+
+  #stat_regline_equation(label.y = 2, aes(label = ..eq.label..)) +
+  stat_regline_equation(label.y = 2, aes(label = ..rr.label..)) +
+  xlab("Mean Annual Temperature(C)") +
+  ylab(expression(Annual~CH[4]~ Flux ~(g~C~m^-2~yr^-1)))+
+  theme_classic()+ 
+  scale_x_continuous(breaks=c(-10, -5, 0, 5, 10, 15, 20, 25, 30))+
+  scale_shape_manual(values=c( 2, 0, 1, 6, 5))+ 
+  scale_color_manual(values=c("grey", "#f6e8c3", "#c7eae5", "#003c30", "#01665e", "#35978f", "#543005", "#8c510a", "#bf812d", "#80cdc1"))
+plot1
+
+p3 = plot1+scale_y_log10(limits=c(1, 700))
+p3
+```
