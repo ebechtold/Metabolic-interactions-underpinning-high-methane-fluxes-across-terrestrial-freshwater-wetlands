@@ -131,7 +131,7 @@ edges_all <- edges_s %>%
 ```{r}
 write_csv(edges_all, "node.csv")
 ```
-
+Using the corresponding network ID files and the taxonomy files, genera can be assigned function. For figure 3 we only retained the methanogens and their connections.
 
 Now we will visualize the networks and get network statistics outside of R using the progran Gephi. Download at https://gephi.org/users/download/
 
