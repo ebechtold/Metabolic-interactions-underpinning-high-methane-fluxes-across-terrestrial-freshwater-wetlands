@@ -9,7 +9,7 @@ data2a <- read_csv("Source_Data_Figure2.csv")
 metadata1 <- read_csv("Source_Data_Figure2_metadata.csv")
 ```
 
-
+Invert the dataframe so that each row is a sample and each column is a genus. 
 ```{r}
 flip <- data2a %>% 
   pivot_longer(2:1109, names_to = "Sample", values_to = "count") %>% 
@@ -21,16 +21,18 @@ genus <- flip %>%
   select(2:1208)
 ```
 
-create distance matrix
+The next step is to take the data frame and turn it into a distance matrix using Bray-Curtis distance
 ```{r}
 data.t <- as.matrix(vegdist(genus, method = 'bray'))
 ```
-
+PERMANOVA (Permutational multivariate analysis of variance) by wetland type
 ```{r}
 
-mer_perm<-adonis(data.t ~ Depth*Type, data=metadata, permutations = 999)
+mer_perm<-adonis(data.t ~ Type, data=metadata, permutations = 999)
 mer_perm
 ```
+
+Visualize community similarity using NMDS (non-metric multidimensional scaling)
 ```{r}
 NMDS<-metaMDS(data.t, trymax= 200,k=4)
 
