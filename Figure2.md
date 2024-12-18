@@ -5,30 +5,22 @@ library(tidyverse)
 library(vegan)
 ```
 ```{r}
-data2a <- read_csv("merged_all_genus_STM_3_removed.csv")
-metadata1 <- read_csv("metadata_genus_all_merged_3_STM_removed.csv")
-```
-```{r}
-merged[is.na(merged)] = 0
+data2a <- read_csv("Source_Data_Figure2.csv")
+metadata1 <- read_csv("Source_Data_Figure2_metadata.csv")
 ```
 
 
 ```{r}
 flip <- data2a %>% 
-  pivot_longer(2:1110, names_to = "Sample", values_to = "count") %>% 
-  pivot_wider(names_from = ID, values_from = count)%>% 
-  filter(Sample != "STM-bog_3_bog_May_35D")
+  pivot_longer(2:1109, names_to = "Sample", values_to = "count") %>% 
+  pivot_wider(names_from = ID, values_from = count)
 ```
 
 ```{r}
 genus <- flip %>% 
-  select(2:1209)
+  select(2:1208)
 ```
 
-```{r}
-metadata <- metadata1 %>% 
-  filter(Sample != "STM-bog_3_bog_May_35D")
-```
 create distance matrix
 ```{r}
 data.t <- as.matrix(vegdist(genus, method = 'bray'))
