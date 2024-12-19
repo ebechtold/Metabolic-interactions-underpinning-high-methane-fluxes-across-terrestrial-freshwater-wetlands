@@ -121,7 +121,7 @@ edges_t <- edges %>%
   select(2)
 ```
 ```{r}
-edges_all <- edges_s %>% 
+nodes_all <- edges_s %>% 
   full_join(edges_t,by = c("Source" = "Target")) %>% 
   distinct() %>% 
   rename("GenID" = "Source") %>% 
@@ -129,7 +129,7 @@ edges_all <- edges_s %>%
 ```
 
 ```{r}
-write_csv(edges_all, "node.csv")
+write_csv(nodes_all, "node.csv")
 ```
 Using the corresponding network ID files and the taxonomy files, genera can be assigned function. For figure 3 we only retained the methanogens and their connections.
 
