@@ -61,6 +61,7 @@ plot2A
 ```
 
 **Figure S4**
+
 After running the NMDS use the code below to select significant enviornmental variables and overlay the vectors onto the NMDS
 Data is From Source Data Filesand can be filtred to only include the relavant metadata
 ```{r}
