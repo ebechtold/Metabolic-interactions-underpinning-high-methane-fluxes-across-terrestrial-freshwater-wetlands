@@ -21,12 +21,13 @@ library(treeio)
 All files can be found on Zenodo: DOI 10.5281/zenodo.14532347
 
 
+Read in tree file
 ```
 arc_tree = read.tree("gtdbtk.ar53.decorated.tree")
 arc_tree
 ```
 
-read in taxonomy (from data_processing)
+Read in taxonomy
 
 ```
 annotation = read.delim("classification_wOutgroup.txt",sep="\t",header = FALSE)
@@ -34,36 +35,36 @@ colnames(annotation)=c("MAG","tax")
 annotation=annotation%>%separate(tax,into=c("d","p","c","o","f","g","s"),sep=";",remove=FALSE)
 ```
 
-read in data on linking MAG to source
+Read in data on linking MAG to source
 ```
 site <- read.delim('Methanoregula_MAGs_list.txt')
 ```
 
-read in anvi'o pangenome data
+Read in physiology data
 ```
 pangenome <- read.delim('Methanoregula_physiology.txt')
 ```
 
- make archaeal tree
+ Make archaeal tree
  ```
 arc_dat=as.data.frame(arc_tree$tip.label)
 colnames(arc_dat)=c("MAG")
 arc_dat=left_join(arc_dat,annotation,by="MAG")
 ```
 
-undecorated tree - section 4.2.2 of https://yulab-smu.top/treedata-book/chapter4.html
+Undecorated tree - section 4.2.2 of https://yulab-smu.top/treedata-book/chapter4.html
 ```
 regula_tree <- ggtree(arc_tree, color="black", size=0.5, linetype="solid", layout="rectangular",  branch.length = "branch.length")
 ```
 
-color palette for sites
+Color palette for sites
 ```
 Sourcecol <- c("GTDB"="#a3c754", "JGI"="#059553", "OWC"="#023c31", "STM"="#dfc27d", 'PPR'="#359890")
 MetabCol <- c("Any_genes_present"= "darkorange",   "Majority_of_the_genes"="darkorange3",
               "Present"="chocolate4",  "Missing"="ghostwhite")
 ```
 
-script with dummy data for pangenome analyses
+Script for physiology analyses
 ```
 arc=regula_tree +
   geom_fruit(data=site,geom=geom_tile,
@@ -90,6 +91,5 @@ arc=regula_tree +
 ```
 
 
-##to finish the figure, just need to swap in real data for "pangenome" following anvi'o
 
 
