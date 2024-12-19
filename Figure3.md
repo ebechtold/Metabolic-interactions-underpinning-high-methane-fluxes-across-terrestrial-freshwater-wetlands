@@ -135,4 +135,7 @@ Using the corresponding network ID files and the taxonomy files, genera can be a
 
 Now we will visualize the networks and get network statistics outside of R using the progran Gephi. Download at https://gephi.org/users/download/
 
+Figure 3 and S8 use the exact same output but Figure 3 is visualized with only the MAGs from MUCC v2.0.0 that are found in the networks and Figure S8 is the entore network.
+Figure S10 uses the same data but uses a p values of 0.06 instead of 0.05.
+
 
