@@ -59,3 +59,28 @@ plot2A <- ggplot(NMDS) +
    theme(text=element_text(size=21))
 plot2A
 ```
+
+**Figure S4**
+After running the NMDS use the code below to select significant enviornmental variables and overlay the vectors onto the NMDS
+Data is From Source Data Filesand can be filtred to only include the relavant metadata
+```{r}
+envfit.data <- read.delim("Figure2a_metadata.txt") # text file of enviornmental variables
+envfit_perm <- envfit(NMDS, envfit.data, permutations = 999) # this fits environmental vectors
+```
+
+```{r}
+env.scores <- as.data.frame(scores(envfit_perm, display = "vectors")) #extracts relevant scores from envifit
+env.scores <- cbind(env.scores, env.variables = rownames(env.scores)) #and then gives them their names
+
+env.scores <- cbind(env.scores, pval = envfit_perm$vectors$pvals) # add pvalues to dataframe
+sig.env.scrs <- subset(env.scores, pval<=0.05) #subset data to show variables significant at 0.05
+```
+
+
+```{r}
+plot_env <- NMDS_plot +
+  geom_segment(data = sig.env.scrs, aes(x = 0, xend=NMDS1, y=0, yend=NMDS2), arrow = arrow(length = unit(0.25, "cm")), colour = "grey10", lwd=0.3) + #add vector arrows of significant env variables
+  ggrepel::geom_text_repel(data = sig.env.scrs, aes(x=NMDS1, y=NMDS2, label = env.variables), cex = 4, direction = "both", segment.size = 0.25)#+ #add labels for env variables
+  #labs(title="Ordination with environmental vectors")
+plot_env
+```
