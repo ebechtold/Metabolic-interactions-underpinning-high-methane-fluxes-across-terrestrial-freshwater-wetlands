@@ -47,6 +47,10 @@ plot1A = plot1+scale_y_log10(limits=c(1, 700))
 plot1A 
 ```
 
+Figure S2 use data from Source Code Figure1a
+
+ Figure S5A uses and Figure S7 use data from Source Code S7.
+
 **Figure 1C**
 ```{r}
 library(tidyverse)
