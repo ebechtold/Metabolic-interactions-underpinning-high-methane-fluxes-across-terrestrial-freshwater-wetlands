@@ -50,7 +50,7 @@ plot <- ggplot(test, aes(x=Site, y=all, fill=Site)) +
 plot
 ```
 
-
+Merge Shannon Data with Flux Data
 ```{r}
 library(tidyverse)
 join <- test %>% 
@@ -72,6 +72,7 @@ pairwise.wilcox.test(join$all, join$Type,
                  p.adjust.method = "BH")
 ```
 
+Calucalte the average Shannon Diversity for each site
 ```{r}
 detach(package:plyr)
 filtered <- join %>% 
