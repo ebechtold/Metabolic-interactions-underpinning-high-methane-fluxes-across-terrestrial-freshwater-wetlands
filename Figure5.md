@@ -1,4 +1,3 @@
-**Figure 5**
 
 **Figure 5B**
 
