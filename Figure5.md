@@ -4,7 +4,7 @@
 
 ggtreeEXTRA manual: https://yulab-smu.top/treedata-book/chapter10.html
 
-
+```
 library(ape)
 library(ggplot2)
 library(ggtree)
@@ -16,9 +16,10 @@ library(ggnewscale)
 library(cowplot)
 library(TDbook)
 library(treeio)
+```
 
-all files can be found on Zenodo: DOI 10.5281/zenodo.14532347
-read in GTDB trees (from data_processing)
+All files can be found on Zenodo: DOI 10.5281/zenodo.14532347
+
 
 ```
 arc_tree = read.tree("gtdbtk.ar53.decorated.tree")
