@@ -1,9 +1,9 @@
 **Figure 5**
 
 **Figure 5B**
-################
-###### ggtreeEXTRA manual: https://yulab-smu.top/treedata-book/chapter10.html
-################
+
+ggtreeEXTRA manual: https://yulab-smu.top/treedata-book/chapter10.html
+
 
 library(ape)
 library(ggplot2)
